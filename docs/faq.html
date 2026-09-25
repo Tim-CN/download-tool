@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>答疑解惑</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>答疑解惑</h1>
+  <p>常见问题与使用技巧</p>
+</header>
+
+<nav class="site-nav">
+  <ul>
+    <li><a href="index.html">首页</a></li>
+    <li><a href="terms.html">用户协议与使用条款</a></li>
+    <li><a href="faq.html">答疑解惑</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="card">
+    <h2>引擎相关</h2>
+
+    <div class="faq-item">
+      <h3>Q1：you-get 和 yt-dlp 应该选哪个？</h3>
+      <p>
+        <strong>you-get</strong> 对国内视频站（B 站、优酷、腾讯、爱奇艺等）支持较好，配置简单；
+        <strong>yt-dlp</strong> 支持的站点数量更多、更新更活跃，对 YouTube 及国外站点支持更强，且支持字幕、播放列表等高级功能。
+        两者可同时安装，随时在工具栏切换。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q2：提示「引擎不可用」怎么办？</h3>
+      <p>
+        请将对应的可执行文件（Windows 下为 <code>you-get.exe</code>、<code>yt-dlp.exe</code>）
+        放入程序目录下的 <code>engines</code> 文件夹，或安装到系统 PATH 中。
+        推荐使用内置方式，免安装、免配置。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q3：yt-dlp 下载高清视频时提示缺少 FFmpeg？</h3>
+      <p>
+        部分高画质视频的音视频是分离的，需要 FFmpeg 进行合并。
+        请下载 FFmpeg 并将其 <code>bin</code> 目录加入系统 PATH，或放在 <code>engines</code> 文件夹下。
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Cookie 相关</h2>
+
+    <div class="faq-item">
+      <h3>Q4：为什么有些链接下载失败，提示需要 Cookie？</h3>
+      <p>
+        部分平台对未登录用户隐藏高画质或限制访问。请在「设置 → Cookie 管理」中为对应平台添加 Cookie。
+        可以使用内置的「一键导出」功能，自动从浏览器提取当前登录状态的 Cookie。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q5：Cookie 会过期吗？</h3>
+      <p>
+        会。多数平台的登录凭证有有效期，过期后需要重新导出。
+        若下载突然开始失败并出现 403 等状态码，建议先更新对应平台的 Cookie。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q6：我的 Cookie 会被上传吗？</h3>
+      <p>
+        <strong>不会。</strong>Cookie 仅保存在您本机的用户目录下，程序运行过程中不会将其发送到任何第三方服务器，
+        仅作为参数传递给本机的下载引擎用于访问目标平台。
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>自定义请求头</h2>
+
+    <div class="faq-item">
+      <h3>Q7：什么情况下需要自定义请求头？</h3>
+      <p>
+        某些平台在服务端校验请求来源（Referer）或客户端标识（User-Agent）时，
+        只带 Cookie 可能仍被拒绝。这时可以在「设置 → 通用 → 自定义请求头」中补充。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q8：请求头是全局生效还是只对特定站点生效？</h3>
+      <p>
+        程序会自动判断：<br>
+        • 值中含域名的请求头（如 <code>Referer: https://www.example.com/</code>）<strong>只对匹配该域名的链接生效</strong>；<br>
+        • 值中不含域名的请求头（如 <code>User-Agent</code>、<code>Accept</code>）<strong>对所有链接全局生效</strong>。<br>
+        每行一条，格式为 <code>Key: Value</code>。
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>日志与输出</h2>
+
+    <div class="faq-item">
+      <h3>Q9：日志文件保存在哪里？</h3>
+      <p>
+        日志按日期分目录存储，路径为：<code>&lt;日志目录&gt;/YYYYMMDD/download.log</code>。
+        日志目录可在「设置 → 通用」中修改，并支持「移动」功能将历史日志整体迁移到新位置。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q10：日志区内容太多，如何清空？</h3>
+      <p>
+        点击日志区右上角的「🗑 清空日志」按钮即可清空界面显示。
+        已写入磁盘的历史日志不受影响，仍保留在对应的日期文件夹中。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q11：下载完成后如何快速找到文件？</h3>
+      <p>
+        下载完成弹窗中提供「打开下载目录」按钮，可直接打开目标文件夹。
+        日志区也会列出本次成功下载的完整文件路径。
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>故障排查</h2>
+
+    <div class="faq-item">
+      <h3>Q12：点击「开始下载」后没有任何反应？</h3>
+      <p>
+        请依次检查：<br>
+        1. 下载目录是否存在且可写；<br>
+        2. 当前引擎是否可用（工具栏左侧状态标签是否为绿色）；<br>
+        3. URL 列表是否为空或格式错误；<br>
+        4. 查看日志区是否有报错信息。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q13：下载到一半失败，部分任务未完成？</h3>
+      <p>
+        多数是目标平台的网络波动或风控触发。可等待几分钟后重试；
+        若某条链接反复失败，请在日志区查看具体报错内容，必要时更新 Cookie 或更换引擎。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q14：并发数设置多少合适？</h3>
+      <p>
+        建议 <code>3~5</code>。并发数过高容易触发平台风控导致失败率上升，
+        也会占用较多系统资源。若下载频繁失败，可先将并发数降为 <code>1</code> 逐个排查。
+      </p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>其他</h2>
+
+    <div class="faq-item">
+      <h3>Q15：程序是否会上传我的使用数据？</h3>
+      <p>
+        不会。本程序完全在本地运行，不包含任何遥测或数据上报逻辑。
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Q16：使用本工具下载内容是否合法？</h3>
+      <p>
+        请务必阅读 <a href="terms.html">用户协议与使用条款</a>。
+        简单来说：仅下载您拥有合法权利或已获授权的内容，并遵守目标平台条款及当地法律法规。
+        下载受版权保护的内容可能违规，风险由使用者自行承担。
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> You-Get / YT-DLP 批量下载工具 · 本项目仅供学习与技术交流</p>
+</footer>
+
+<script src="assets/common.js"></script>
+</body>
+</html>
